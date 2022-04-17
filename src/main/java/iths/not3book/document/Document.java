@@ -8,8 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Document {
 
@@ -28,4 +27,8 @@ public class Document {
     private String title;
 
     private Date createdAt;
+
+    public Document(String title) {
+        this.title = title;
+    }
 }

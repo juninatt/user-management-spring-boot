@@ -8,8 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Subscriber {
 
@@ -28,4 +27,8 @@ public class Subscriber {
     private String userName;
 
     private Date becameMember;
+
+    public Subscriber(String userName) {
+        this.userName = userName;
+    }
 }

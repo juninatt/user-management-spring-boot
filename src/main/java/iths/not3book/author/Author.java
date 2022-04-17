@@ -8,8 +8,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Author {
 
@@ -27,5 +26,9 @@ public class Author {
 
     private String userName;
 
-    private Date becameMember;
+    private Date becameMember = new Date();
+
+    public Author(String userName) {
+        this.userName = userName;
+    }
 }

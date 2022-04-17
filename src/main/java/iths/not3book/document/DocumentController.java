@@ -1,9 +1,7 @@
 package iths.not3book.document;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +16,12 @@ public class DocumentController {
         this.documentService = documentService;
     }
 
-    @GetMapping("/test")
+    @GetMapping
     public List<Document> getDocuments() {
         return documentService.getDocuments();
+    }
+    @PostMapping
+    public void registerDocument(@RequestBody Document document) {
+        documentService.addDocument(document);
     }
 }

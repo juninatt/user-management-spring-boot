@@ -18,4 +18,8 @@ public class SubscriberService {
     public List<Subscriber> getSubscribers() {
         return subscriberRepository.findAll();
     }
+
+    public void addSubscriber(Subscriber subscriber) {
+        subscriberRepository.save(subscriber);
+    }
 }

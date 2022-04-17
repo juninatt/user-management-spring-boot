@@ -17,4 +17,8 @@ public class DocumentService {
     public List<Document> getDocuments() {
         return documentRepository.findAll();
     }
+
+    public void addDocument(Document document) {
+        documentRepository.save(document);
+    }
 }

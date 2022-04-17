@@ -1,9 +1,7 @@
 package iths.not3book.author;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -18,8 +16,13 @@ public class AuthorController {
         this.authorService = authorService;
     }
 
-    @GetMapping("/test")
+    @GetMapping
     public List<Author> getAuthors() {
         return authorService.getAuthors();
+    }
+
+    @PostMapping
+    public void registerAuthor(@RequestBody Author author) {
+        authorService.addAuthor(author);
     }
 }

@@ -1,0 +1,9 @@
+DELETE http://localhost:8080/author/1
+
+###
+
+DELETE http://localhost:8080/subscriber/1
+
+###
+
+DELETE http://localhost:8080/document/1

@@ -21,4 +21,8 @@ public class DocumentService {
     public void addDocument(Document document) {
         documentRepository.save(document);
     }
+
+    public void removeDocument(Long documentId) {
+        documentRepository.deleteById(documentId);
+    }
 }

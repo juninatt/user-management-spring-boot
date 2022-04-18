@@ -21,7 +21,11 @@ public class DocumentController {
         return documentService.getDocuments();
     }
     @PostMapping
-    public void registerDocument(@RequestBody Document document) {
+    public void addNewDocument(@RequestBody Document document) {
         documentService.addDocument(document);
+    }
+    @DeleteMapping(path = "{documentId}")
+    public void removeDocument(@PathVariable("documentId") Long documentId) {
+        documentService.removeDocument(documentId);
     }
 }

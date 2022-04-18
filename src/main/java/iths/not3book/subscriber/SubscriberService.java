@@ -22,4 +22,8 @@ public class SubscriberService {
     public void addSubscriber(Subscriber subscriber) {
         subscriberRepository.save(subscriber);
     }
+
+    public void removeSubscriber(Long subscriberId) {
+        subscriberRepository.deleteById(subscriberId);
+    }
 }

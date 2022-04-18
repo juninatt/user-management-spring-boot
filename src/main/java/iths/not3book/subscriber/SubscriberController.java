@@ -22,7 +22,11 @@ public class SubscriberController {
         return subscriberService.getSubscribers();
     }
     @PostMapping
-    public void registerSubscriber(@RequestBody Subscriber subscriber) {
+    public void addNewSubscriber(@RequestBody Subscriber subscriber) {
         subscriberService.addSubscriber(subscriber);
+    }
+    @DeleteMapping(path = "{subscriberId}")
+    public void removeSubscriber(@PathVariable("subscriberId") Long subscriberId) {
+        subscriberService.removeSubscriber(subscriberId);
     }
 }

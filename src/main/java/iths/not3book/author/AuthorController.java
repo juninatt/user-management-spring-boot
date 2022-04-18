@@ -22,7 +22,11 @@ public class AuthorController {
     }
 
     @PostMapping
-    public void registerAuthor(@RequestBody Author author) {
+    public void addNewAuthor(@RequestBody Author author) {
         authorService.addAuthor(author);
+    }
+    @DeleteMapping(path = "{authorId}")
+    public void removeAuthor(@PathVariable("authorId") Long authorId) {
+        authorService.removeAuthor(authorId);
     }
 }

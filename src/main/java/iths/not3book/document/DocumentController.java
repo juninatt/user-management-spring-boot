@@ -20,12 +20,21 @@ public class DocumentController {
     public List<Document> getDocuments() {
         return documentService.getDocuments();
     }
+
     @PostMapping
     public void addNewDocument(@RequestBody Document document) {
         documentService.addDocument(document);
     }
+
     @DeleteMapping(path = "{documentId}")
     public void removeDocument(@PathVariable("documentId") Long documentId) {
         documentService.removeDocument(documentId);
+    }
+
+    @PutMapping(path = "{documentId}")
+    public void updateTitle(
+            @PathVariable("documentId") Long documentId,
+            @RequestParam String title) {
+        documentService.updateTitle(documentId, title);
     }
 }

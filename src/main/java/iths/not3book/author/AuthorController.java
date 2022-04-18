@@ -25,8 +25,16 @@ public class AuthorController {
     public void addNewAuthor(@RequestBody Author author) {
         authorService.addAuthor(author);
     }
+
     @DeleteMapping(path = "{authorId}")
     public void removeAuthor(@PathVariable("authorId") Long authorId) {
         authorService.removeAuthor(authorId);
+    }
+
+    @PutMapping(path = "{authorId}")
+    public void updateUserName(
+            @PathVariable("authorId") Long authorId,
+            @RequestParam String userName) {
+        authorService.updateUserName(authorId, userName);
     }
 }

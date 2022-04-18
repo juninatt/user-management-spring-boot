@@ -21,12 +21,21 @@ public class SubscriberController {
     public List<Subscriber> getSubscribers() {
         return subscriberService.getSubscribers();
     }
+
     @PostMapping
     public void addNewSubscriber(@RequestBody Subscriber subscriber) {
         subscriberService.addSubscriber(subscriber);
     }
+
     @DeleteMapping(path = "{subscriberId}")
     public void removeSubscriber(@PathVariable("subscriberId") Long subscriberId) {
         subscriberService.removeSubscriber(subscriberId);
+    }
+
+    @PutMapping(path = "{subscriberId}")
+    public void updateUserName(
+            @PathVariable("subscriberId") Long subscriberId,
+            @RequestParam String userName) {
+        subscriberService.updateUserName(subscriberId, userName);
     }
 }

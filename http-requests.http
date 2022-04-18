@@ -25,6 +25,21 @@ Content-Type: application/json
 
 ###
 
+PUT http://localhost:8080/author/1?userName=Frappilussvickotar
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/subscriber/1?userName=Sulleplisskotirr
+Content-Type: application/json
+
+###
+
+PUT http://localhost:8080/document/1?title=Hömmelihähä
+Content-Type: application/json
+
+###
+
 DELETE http://localhost:8080/author/1
 
 ###

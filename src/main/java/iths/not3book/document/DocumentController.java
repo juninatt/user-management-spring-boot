@@ -21,6 +21,11 @@ public class DocumentController {
         return documentService.getDocuments();
     }
 
+    @GetMapping(path = ("{documentId}"))
+    public Document getDocument(@PathVariable("documentId") Long documentId) {
+        return documentService.getDocument(documentId);
+    }
+
     @PostMapping
     public void addNewDocument(@RequestBody Document document) {
         documentService.addDocument(document);

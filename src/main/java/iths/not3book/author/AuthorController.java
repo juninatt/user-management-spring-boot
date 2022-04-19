@@ -1,6 +1,5 @@
 package iths.not3book.author;
 
-import iths.not3book.exception.ApiRequestException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +21,11 @@ public class AuthorController {
         return authorService.getAuthors();
     }
 
+    @GetMapping("{authorId}")
+    public Author getAuthor(@PathVariable("authorId") Long id) {
+        return authorService.getAuthor(id);
+    }
+
     @PostMapping
     public void addNewAuthor(@RequestBody Author author) {
         authorService.addAuthor(author);
@@ -36,7 +40,6 @@ public class AuthorController {
     public void updateUserName(
             @PathVariable("authorId") Long authorId,
             @RequestParam String userName) {
-        throw new ApiRequestException("Testing testing");
-       // authorService.updateUserName(authorId, userName);
+       authorService.updateUserName(authorId, userName);
     }
 }

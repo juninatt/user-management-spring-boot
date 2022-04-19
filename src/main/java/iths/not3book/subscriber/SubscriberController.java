@@ -22,6 +22,11 @@ public class SubscriberController {
         return subscriberService.getSubscribers();
     }
 
+    @GetMapping(path = ("{subscriberId}"))
+    public Subscriber gerSubscribers(@PathVariable("subscriberId") Long subscriberId) {
+        return subscriberService.getSubscriber(subscriberId);
+    }
+
     @PostMapping
     public void addNewSubscriber(@RequestBody Subscriber subscriber) {
         subscriberService.addSubscriber(subscriber);

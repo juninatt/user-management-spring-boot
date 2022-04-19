@@ -1,4 +1,4 @@
-package iths.not3book.exception.error;
+package iths.not3book.exception;
 
 import lombok.Getter;
 import org.springframework.http.HttpStatus;
@@ -18,5 +18,4 @@ public class ResourceNotFoundException extends RuntimeException {
         this.fieldName = fieldName;
         this.fieldValue = fieldValue;
     }
-
 }

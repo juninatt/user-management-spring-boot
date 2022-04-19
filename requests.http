@@ -1,3 +1,18 @@
+### GET AUTHOR BY ID
+
+GET http://localhost:8080/author/9
+Content-Type: application/json
+
+### GET SUBSCRIBER BY ID
+
+GET http://localhost:8080/subscriber/9
+Content-Type: application/json
+
+### GET DOCUMENT BY ID
+
+GET http://localhost:8080/document/9
+Content-Type: application/json
+
 ### GET ALL AUTHORS
 
 GET http://localhost:8080/author/

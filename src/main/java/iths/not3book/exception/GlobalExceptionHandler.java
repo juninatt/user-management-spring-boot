@@ -16,15 +16,15 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public ResponseEntity<ErrorResponse> handleGlobalException(Exception exception,
-                                                               WebRequest webRequest){
+    public ResponseEntity<ErrorResponse> handleInternalErrorException(Exception exception,
+                                                                      WebRequest webRequest){
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-        ErrorResponse errorDetails = new ErrorResponse(
+        ErrorResponse errorResponse = new ErrorResponse(
                 httpStatus.value(),
                 LocalDateTime.now(),
                 exception.getMessage(),
                 webRequest.getDescription(false));
-        return new ResponseEntity<>(errorDetails, httpStatus);
+        return new ResponseEntity<>(errorResponse, httpStatus);
     }
 
 

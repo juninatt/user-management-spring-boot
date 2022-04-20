@@ -30,9 +30,13 @@ public class Subscriber {
     )
     private String userName;
 
+    @Column(
+            nullable = false
+    )
     private Date becameMember;
 
     public Subscriber(String userName) {
         this.userName = userName;
+        this.becameMember = new Date();
     }
 }

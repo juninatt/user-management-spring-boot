@@ -1,9 +1,13 @@
 package iths.not3book.document;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import iths.not3book.author.Author;
 import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,9 +33,18 @@ public class Document {
     )
     private String title;
 
+    @Column(
+            nullable = false
+    )
     private Date createdAt;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "documents")
+    @ToString.Exclude
+    private Set<Author> authors = new HashSet<>();
 
     public Document(String title) {
         this.title = title;
+        this.createdAt = new Date();
     }
 }

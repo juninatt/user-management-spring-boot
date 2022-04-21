@@ -1,5 +1,7 @@
 package iths.not3book.author;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import iths.not3book.contact.ContactInfo;
 import iths.not3book.document.Document;
 import lombok.*;
 
@@ -42,8 +44,15 @@ public class Author {
             joinColumns = @JoinColumn(name = "author_id"),
             inverseJoinColumns = @JoinColumn(name = "document_id")
     )
+    @JsonIgnore
     @ToString.Exclude
     private Set<Document> documents = new HashSet<>();
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "contact_info_id")
+    @JsonIgnore
+    @ToString.Exclude
+    private ContactInfo contactInformation;
 
     public Author(String userName) {
         this.userName = userName;
@@ -51,5 +60,9 @@ public class Author {
 
     public void addDocument(Document document) {
         documents.add(document);
+    }
+
+    public void addContactInformation(ContactInfo contactInfo) {
+        this.contactInformation = contactInfo;
     }
 }

@@ -1,5 +1,7 @@
 package iths.not3book.author;
 
+import iths.not3book.contact.ContactInfo;
+import iths.not3book.contact.ContactInfoService;
 import iths.not3book.document.Document;
 import iths.not3book.document.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,11 +15,13 @@ public class AuthorController {
 
     private final AuthorService authorService;
     private final DocumentService documentService;
+    private final ContactInfoService contactInfoService;
 
     @Autowired
-    public AuthorController(AuthorService authorService, DocumentService documentService) {
+    public AuthorController(AuthorService authorService, DocumentService documentService, ContactInfoService contactInfoService) {
         this.authorService = authorService;
         this.documentService = documentService;
+        this.contactInfoService = contactInfoService;
     }
 
     @GetMapping
@@ -54,6 +58,16 @@ public class AuthorController {
       Author author = authorService.getAuthor(authorId);
         Document document = documentService.getDocument(documentId);
         author.addDocument(document);
+        authorService.addAuthor(author);
+    }
+    @PutMapping("{authorId}/contactinfo/{contactInfoId}")
+    public void addContactInformationToAuthor(
+            @PathVariable("authorId") Long authorId,
+            @PathVariable("contactInfoId") Long contactInfoId
+    ) {
+        Author author = authorService.getAuthor(authorId);
+        ContactInfo contactInfo = contactInfoService.getContactInformation(contactInfoId);
+        author.addContactInformation(contactInfo);
         authorService.addAuthor(author);
     }
 }

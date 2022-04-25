@@ -1,7 +1,7 @@
 package iths.not3book.author;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import iths.not3book.contact.ContactInfo;
+import iths.not3book.contactinfo.ContactInfo;
 import iths.not3book.document.Document;
 import lombok.*;
 

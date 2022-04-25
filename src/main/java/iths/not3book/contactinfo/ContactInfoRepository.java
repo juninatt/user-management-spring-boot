@@ -1,4 +1,4 @@
-package iths.not3book.contact;
+package iths.not3book.contactinfo;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

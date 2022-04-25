@@ -1,7 +1,7 @@
 package iths.not3book.author;
 
-import iths.not3book.contact.ContactInfo;
-import iths.not3book.contact.ContactInfoService;
+import iths.not3book.contactinfo.ContactInfo;
+import iths.not3book.contactinfo.ContactInfoService;
 import iths.not3book.document.Document;
 import iths.not3book.document.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;

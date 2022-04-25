@@ -1,4 +1,4 @@
-package iths.not3book.contact;
+package iths.not3book.contactinfo;
 
 import iths.not3book.author.Author;
 import lombok.Getter;

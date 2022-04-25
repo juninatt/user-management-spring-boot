@@ -1,0 +1,35 @@
+### GET AUTHOR BY ID
+
+GET http://localhost:8080/author/2
+Content-Type: application/json
+
+### GET ALL AUTHORS
+
+GET http://localhost:8080/author/
+Content-Type: application/json
+
+### CREATE AUTHOR
+
+POST http://localhost:8080/author/
+Content-Type: application/json
+
+{
+  "userName": "petter"
+}
+
+### UPDATE AUTHOR USERNAME
+
+PUT http://localhost:8080/author/1?userName=Frappilussvickotar
+Content-Type: application/json
+
+### DELETE AUTHOR BY ID
+
+DELETE http://localhost:8080/author/1
+
+### ADD DOCUMENT TO AUTHOR BY ID
+
+PUT http://localhost:8080/author/2/document/1
+
+### ADD CONTACT INFORMATION TO AUTHOR BY ID
+
+PUT http://localhost:8080/author/1/contactinfo/1

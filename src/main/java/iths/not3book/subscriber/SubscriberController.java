@@ -23,7 +23,7 @@ public class SubscriberController {
     }
 
     @GetMapping(path = ("{subscriberId}"))
-    public Subscriber gerSubscribers(@PathVariable("subscriberId") Long subscriberId) {
+    public Subscriber gerSubscriber(@PathVariable("subscriberId") Long subscriberId) {
         return subscriberService.getSubscriber(subscriberId);
     }
 

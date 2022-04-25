@@ -1,0 +1,31 @@
+### GET DOCUMENT BY ID
+
+GET http://localhost:8080/document/1
+Content-Type: application/json
+
+### GET ALL DOCUMENTS
+
+GET http://localhost:8080/document/
+Content-Type: application/json
+
+### CREATE DOCUMENT
+
+POST http://localhost:8080/document/
+Content-Type: application/json
+
+{
+  "title": "1984"
+}
+
+### UPDATE DOCUMENT TITLE
+
+PUT http://localhost:8080/document/1?title=Hömmelihähä
+Content-Type: application/json
+
+### DELETE DOCUMENT BY ID
+
+DELETE http://localhost:8080/document/1
+
+### ADD DOCUMENT TO AUTHOR BY ID
+
+PUT http://localhost:8080/author/2/document/1

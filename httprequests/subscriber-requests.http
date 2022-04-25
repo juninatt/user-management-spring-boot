@@ -1,0 +1,27 @@
+### GET SUBSCRIBER BY ID
+
+GET http://localhost:8080/subscriber/1
+Content-Type: application/json
+
+### GET ALL SUBSCRIBERS
+
+GET http://localhost:8080/subscriber/
+Content-Type: application/json
+
+### CREATE SUBSCRIBER
+
+POST http://localhost:8080/subscriber/
+Content-Type: application/json
+
+{
+  "userName": "banana"
+}
+
+### UPDATE SUBSCRIBER USERNAME
+
+PUT http://localhost:8080/subscriber/1?userName=Sulleplisskotirr
+Content-Type: application/json
+
+### DELETE SUBSCRIBER BY ID
+
+DELETE http://localhost:8080/subscriber/1

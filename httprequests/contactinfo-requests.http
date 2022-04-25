@@ -1,0 +1,25 @@
+### GET CONTACT INFORMATION BY ID
+
+GET http://localhost:8080/contactinfo/1
+Content-Type: application/json
+
+### GET ALL CONTACT INFORMATION
+
+GET http://localhost:8080/contactinfo/
+Content-Type: application/json
+
+### CREATE CONTACT INFORMATION
+
+POST http://localhost:8080/contactinfo/
+Content-Type: application/json
+
+{
+  "firstName": "Petter",
+  "lastName": "Bergström",
+  "email": "petterr.bergstrom@iths.se",
+  "phoneNumber": "0790-000-000"
+}
+
+### ADD CONTACT INFORMATION TO AUTHOR BY ID
+
+PUT http://localhost:8080/author/1/contactinfo/1

@@ -23,7 +23,7 @@ public class AuthorService {
 
     public Author getAuthor(Long authorId) {
         return authorRepository.findById(authorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Author", "id", authorId));
+                .orElseThrow(() -> new ResourceNotFoundException("Author", "id", String.valueOf(authorId)));
     }
 
     public void addAuthor(Author author) {
@@ -32,15 +32,14 @@ public class AuthorService {
 
     public void removeAuthor(Long authorId) {
         Author author = authorRepository.findById(authorId)
-                        .orElseThrow(() -> new ResourceNotFoundException("Author", "id", authorId));
+                        .orElseThrow(() -> new ResourceNotFoundException("Author", "id", String.valueOf(authorId)));
         authorRepository.delete(author);
     }
 
     @Transactional
     public void updateUserName(Long authorId, String userName) {
         Author author = authorRepository.findById(authorId)
-                .orElseThrow(() -> new ResourceNotFoundException("Author", "id", authorId)
-        );
+                .orElseThrow(() -> new ResourceNotFoundException("Author", "id", String.valueOf(authorId)));
         if ((userName != null) && (userName.length() > 0)) {
             author.setUserName(userName);
         }

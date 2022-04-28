@@ -24,7 +24,7 @@ public class DocumentService {
 
     public Document getDocument(Long documentId) {
         return documentRepository.findById(documentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", documentId));
+                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", String.valueOf(documentId)));
     }
 
     public void addDocument(Document document) {
@@ -33,14 +33,14 @@ public class DocumentService {
 
     public void removeDocument(Long documentId) {
         Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", documentId));
+                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", String.valueOf(documentId)));
         documentRepository.delete(document);
     }
 
     @Transactional
     public void updateTitle(Long documentId, String title) {
         Document document = documentRepository.findById(documentId)
-                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", documentId));
+                .orElseThrow(() -> new ResourceNotFoundException("Document", "id", String.valueOf(documentId)));
         if ((title != null) && (title.length() > 0)) {
             document.setTitle(title);
         }

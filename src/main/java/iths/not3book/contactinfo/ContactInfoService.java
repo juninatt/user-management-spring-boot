@@ -22,7 +22,7 @@ public class ContactInfoService {
     }
     public ContactInfo getContactInformation(Long contactInfoId) {
         return contactInfoRepository.findById(contactInfoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", contactInfoId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", String.valueOf(contactInfoId)));
     }
 
     public void addContactInformation(ContactInfo contactInfo) {
@@ -30,7 +30,7 @@ public class ContactInfoService {
     }
     public void removeContactInformation(Long contactInfoId) {
         ContactInfo contactInfo = contactInfoRepository.findById(contactInfoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", contactInfoId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", String.valueOf(contactInfoId)));
         contactInfoRepository.delete(contactInfo);
     }
     @Transactional
@@ -38,7 +38,7 @@ public class ContactInfoService {
                            String firstName,
                            String lastName) {
         ContactInfo contactInfo = contactInfoRepository.findById(contactInfoId)
-                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", contactInfoId));
+                .orElseThrow(() -> new ResourceNotFoundException("Contact information", "id", String.valueOf(contactInfoId)));
         if (firstName != null &&
                 lastName != null &&
                 firstName.length() > 0 &&

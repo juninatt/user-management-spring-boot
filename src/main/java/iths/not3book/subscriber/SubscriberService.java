@@ -23,7 +23,7 @@ public class SubscriberService {
 
     public Subscriber getSubscriber(Long subscriberId) {
         return subscriberRepository.findById(subscriberId)
-                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", subscriberId));
+                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", String.valueOf(subscriberId)));
     }
 
     public void addSubscriber(Subscriber subscriber) {
@@ -32,14 +32,14 @@ public class SubscriberService {
 
     public void removeSubscriber(Long subscriberId) {
         Subscriber subscriber = subscriberRepository.findById(subscriberId)
-                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", subscriberId));
+                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", String.valueOf(subscriberId)));
         subscriberRepository.delete(subscriber);
     }
 
     @Transactional
     public void updateUserName(Long subscriberId, String userName) {
         Subscriber subscriber = subscriberRepository.findById(subscriberId)
-                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", subscriberId));
+                .orElseThrow(() -> new ResourceNotFoundException("Subscriber", "id", String.valueOf(subscriberId)));
         if ((userName != null) && (userName.length() > 0)) {
             subscriber.setUserName(userName);
         }

@@ -31,6 +31,12 @@ public class Subscriber {
     private String userName;
 
     @Column(
+            nullable = false,
+            length = 60
+    )
+    private String password;
+
+    @Column(
             nullable = false
     )
     private Date becameMember;

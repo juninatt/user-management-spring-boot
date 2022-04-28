@@ -35,6 +35,12 @@ public class Author {
     )
     private String userName;
 
+    @Column(
+            nullable = false,
+            length = 60
+    )
+    private String password;
+
 
     private Date becameMember = new Date();
 

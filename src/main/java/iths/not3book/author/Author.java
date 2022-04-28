@@ -41,6 +41,8 @@ public class Author {
     )
     private String password;
 
+    private String authority;
+
 
     private Date becameMember = new Date();
 
@@ -60,8 +62,9 @@ public class Author {
     @ToString.Exclude
     private ContactInfo contactInformation;
 
-    public Author(String userName) {
+    public Author(String userName, String password) {
         this.userName = userName;
+        this.password = password;
     }
 
     public void addDocument(Document document) {

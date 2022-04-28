@@ -36,13 +36,15 @@ public class Subscriber {
     )
     private String password;
 
+    private String authority;
+
     @Column(
             nullable = false
     )
-    private Date becameMember;
+    private Date becameMember = new Date();
 
-    public Subscriber(String userName) {
+    public Subscriber(String userName, String password) {
         this.userName = userName;
-        this.becameMember = new Date();
+        this.password = password;
     }
 }

@@ -36,7 +36,7 @@ public class Document {
     @Column(
             nullable = false
     )
-    private Date createdAt;
+    private Date createdAt = new Date();
 
     @JsonIgnore
     @ManyToMany(mappedBy = "documents")
@@ -45,6 +45,5 @@ public class Document {
 
     public Document(String title) {
         this.title = title;
-        this.createdAt = new Date();
     }
 }

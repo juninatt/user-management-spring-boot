@@ -1,4 +1,4 @@
-package iths.not3book.config;
+package iths.not3book.sampledata;
 
 import iths.not3book.author.Author;
 import iths.not3book.author.AuthorRepository;
@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 @Configuration
-public class UserConfig {
+public class UserDataConfig {
 
     @Bean
     CommandLineRunner commandLineRunner(
@@ -21,18 +21,18 @@ public class UserConfig {
             SubscriberRepository subscriberRepository,
             DocumentRepository documentRepository) {
         return args -> {
-                    Author ana = new Author("ana");
-                    Author peter = new Author("peter");
-                    Author douglas = new Author("dog");
-                    Author joel = new Author("joel");
-                    Author brian = new Author("brian");
-                    Author dumbledore = new Author("dumbledore");
+                    Author ana = new Author("ana", "password");
+                    Author peter = new Author("peter", "password");
+                    Author douglas = new Author("dog", "password");
+                    Author joel = new Author("joel", "password");
+                    Author brian = new Author("brian", "password");
+                    Author dumbledore = new Author("dumbledore", "password");
 
-                    Subscriber karl = new Subscriber("Karl");
-                    Subscriber nils = new Subscriber("Nils");
-                    Subscriber anna = new Subscriber("Anna");
-                    Subscriber malin = new Subscriber("Malin");
-                    Subscriber robin = new Subscriber("Robin");
+                    Subscriber karl = new Subscriber("Karl", "password");
+                    Subscriber nils = new Subscriber("Nils", "password");
+                    Subscriber anna = new Subscriber("Anna", "password");
+                    Subscriber malin = new Subscriber("Malin", "password");
+                    Subscriber robin = new Subscriber("Robin", "password");
 
                     Document bible = new Document("bible");
                     Document koran = new Document("koran");

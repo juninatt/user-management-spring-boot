@@ -41,8 +41,10 @@ public class Author {
     )
     private String password;
 
-    private String authority;
-
+    @Column(
+            nullable = false
+    )
+    private int enabled;
 
     private Date becameMember = new Date();
 
@@ -62,9 +64,10 @@ public class Author {
     @ToString.Exclude
     private ContactInfo contactInformation;
 
-    public Author(String userName, String password) {
+    public Author(String userName, String password, int enabled) {
         this.userName = userName;
         this.password = password;
+        this.enabled = enabled;
     }
 
     public void addDocument(Document document) {

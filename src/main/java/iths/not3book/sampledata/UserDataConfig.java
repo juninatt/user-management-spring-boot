@@ -1,7 +1,9 @@
 package iths.not3book.sampledata;
 
+import iths.not3book.authorities.Authorities;
 import iths.not3book.author.Author;
 import iths.not3book.author.AuthorRepository;
+import iths.not3book.authorities.AuthoritiesRepository;
 import iths.not3book.document.Document;
 import iths.not3book.document.DocumentRepository;
 import iths.not3book.subscriber.Subscriber;
@@ -19,14 +21,18 @@ public class UserDataConfig {
     CommandLineRunner commandLineRunner(
             AuthorRepository authorRepository,
             SubscriberRepository subscriberRepository,
-            DocumentRepository documentRepository) {
+            DocumentRepository documentRepository,
+            AuthoritiesRepository authoritiesRepository) {
         return args -> {
-                    Author ana = new Author("ana", "password");
-                    Author peter = new Author("peter", "password");
-                    Author douglas = new Author("dog", "password");
-                    Author joel = new Author("joel", "password");
-                    Author brian = new Author("brian", "password");
-                    Author dumbledore = new Author("dumbledore", "password");
+
+                    Authorities read = new Authorities("ana", "read");
+
+                    Author ana = new Author("ana", "password", 1);
+                    Author peter = new Author("peter", "password", 1);
+                    Author douglas = new Author("dog", "password", 1);
+                    Author joel = new Author("joel", "password", 1);
+                    Author brian = new Author("brian", "password", 1);
+                    Author dumbledore = new Author("dumbledore", "password", 1);
 
                     Subscriber karl = new Subscriber("Karl", "password");
                     Subscriber nils = new Subscriber("Nils", "password");
@@ -40,6 +46,8 @@ public class UserDataConfig {
                     Document HP2 = new Document("Harry Potter and Hermiones Crazy Summer");
                     Document storm = new Document("Storm");
                     Document calm = new Document("Calm");
+
+            authoritiesRepository.save(read);
 
             authorRepository.saveAll(
                     List.of(ana, peter, douglas, joel, brian, dumbledore)

@@ -1,29 +1,31 @@
 package iths.not3book.config;
 
-import iths.not3book.sampledata.InMemoryDetailsService;
-import org.springframework.context.annotation.Bean;
+ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.JdbcUserDetailsManager;
 
-import java.util.Collection;
-import java.util.List;
+import javax.sql.DataSource;
 
 @Configuration
 public class UserManagementConfig {
 
 
     @Bean
-    public UserDetailsService userDetailsService() {
-        String authority = "read";
-        Collection<? extends GrantedAuthority> authorities = List.of(() -> authority);
-        UserDetails u = new User("john", "12345", authorities);
-        List<UserDetails> users = List.of(u);
-        return new InMemoryDetailsService(users);
+    public UserDetailsService userDetailsService(DataSource dataSource) {
+        String usersByUsernameQuery =
+                "SELECT user_name, password, enabled FROM author WHERE user_name = ?";
+        String authsByUserQuery = "SELECT user_name, authority FROM authorities WHERE user_name = ?";
+
+        var userDetailsManager = new JdbcUserDetailsManager(dataSource);
+        
+        userDetailsManager.setUsersByUsernameQuery(usersByUsernameQuery);
+        
+        userDetailsManager.setAuthoritiesByUsernameQuery(authsByUserQuery);
+        
+        return userDetailsManager;
     }
     @Bean
     public PasswordEncoder passwordEncoder() {

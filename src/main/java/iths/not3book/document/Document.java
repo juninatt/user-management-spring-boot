@@ -11,7 +11,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Document {
@@ -36,14 +35,23 @@ public class Document {
     @Column(
             nullable = false
     )
-    private Date createdAt = new Date();
+    private Date created = new Date();
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "documents")
-    @ToString.Exclude
+    @JsonIgnore
     private Set<Author> authors = new HashSet<>();
 
     public Document(String title) {
         this.title = title;
+    }
+
+    @Override
+    public String toString() {
+        return "Document: " +
+                "id: " + id +
+                ", title: '" + title +
+                ", createdAt: " + created +
+                ", authors: " + authors +
+                "||";
     }
 }

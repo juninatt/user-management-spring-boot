@@ -12,7 +12,6 @@ import java.util.Set;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Author {
@@ -39,11 +38,13 @@ public class Author {
             nullable = false,
             length = 60
     )
+    @JsonIgnore
     private String password;
 
     @Column(
             nullable = false
     )
+    @JsonIgnore
     private int enabled;
 
     private Date becameMember = new Date();
@@ -55,13 +56,11 @@ public class Author {
             inverseJoinColumns = @JoinColumn(name = "document_id")
     )
     @JsonIgnore
-    @ToString.Exclude
     private Set<Document> documents = new HashSet<>();
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "contact_info_id")
     @JsonIgnore
-    @ToString.Exclude
     private ContactInfo contactInformation;
 
     public Author(String userName, String password, int enabled) {
@@ -76,5 +75,15 @@ public class Author {
 
     public void addContactInformation(ContactInfo contactInfo) {
         this.contactInformation = contactInfo;
+    }
+
+    @Override
+    public String toString() {
+        return "Author " +
+                "id:" + id +
+                ", userName: " + userName +
+                ", enabled: " + enabled +
+                ", becameMember: " + becameMember +
+                "|||";
     }
 }

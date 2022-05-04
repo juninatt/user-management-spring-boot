@@ -1,5 +1,6 @@
 package iths.not3book.subscriber;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -7,7 +8,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
 public class Subscriber {
@@ -34,6 +34,7 @@ public class Subscriber {
             nullable = false,
             length = 60
     )
+    @JsonIgnore
     private String password;
 
     private String authority;
@@ -46,5 +47,15 @@ public class Subscriber {
     public Subscriber(String userName, String password) {
         this.userName = userName;
         this.password = password;
+    }
+
+    @Override
+    public String toString() {
+        return "Subscriber: " +
+                "id: " + id +
+                ", userName: " + userName +
+                ", authority: " + authority +
+                ", becameMember: " + becameMember +
+                "|||";
     }
 }

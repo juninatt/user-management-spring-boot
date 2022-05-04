@@ -1,8 +1,11 @@
-### SIGN IN : Authorization: Basic ana password
+### SIGN IN
+
+Authorization: Basic ana password
 
 ### GET AUTHOR BY ID
 
 GET http://localhost:8080/author/2
+Authorization: Basic ana password
 Content-Type: application/json
 
 ### GET ALL AUTHORS

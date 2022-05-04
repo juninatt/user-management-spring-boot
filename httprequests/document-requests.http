@@ -1,3 +1,7 @@
+### SIGN IN
+
+Authorization: Basic ana password
+
 ### GET DOCUMENT BY ID
 
 GET http://localhost:8080/document/1

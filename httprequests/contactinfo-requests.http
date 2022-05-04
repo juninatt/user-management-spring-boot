@@ -1,3 +1,7 @@
+### SIGN IN
+
+Authorization: Basic ana password
+
 ### GET CONTACT INFORMATION BY ID
 
 GET http://localhost:8080/contactinfo/1

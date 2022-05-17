@@ -4,14 +4,20 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * Authorities class that represents what the user is allowed to do in the application.
+ */
 @Getter
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PUBLIC, force = true)
 @Entity
-public class Authorities {
+public class Authority {
 
 
+    /**
+     * Authorities id. Increments by one for each new object of the class.
+     */
     @Id
     @SequenceGenerator(
             name = "authorities_sequence",
@@ -24,17 +30,26 @@ public class Authorities {
     )
     private Long id;
 
+    /**
+     * Username of the user given the authority. Cannot be null.
+     */
     @Column(
             nullable = false
     )
     private String userName;
 
+    /**
+     * Name of the authority given. Cannot be null.
+     */
     @Column(
             nullable = false
     )
     private String authority;
 
-    public Authorities(String userName, String authority) {
+    /**
+     * Constructor that takes both fields as parameters.
+     */
+    public Authority(String userName, String authority) {
         this.userName = userName;
         this.authority = authority;
     }

@@ -1,6 +1,6 @@
 package iths.not3book.sampledata;
 
-import iths.not3book.authorities.Authorities;
+import iths.not3book.authorities.Authority;
 import iths.not3book.author.Author;
 import iths.not3book.author.AuthorRepository;
 import iths.not3book.authorities.AuthoritiesRepository;
@@ -25,7 +25,7 @@ public class UserDataConfig {
             AuthoritiesRepository authoritiesRepository) {
         return args -> {
 
-                    Authorities read = new Authorities("ana", "read");
+                    Authority anaRead = new Authority("ana", "read");
 
                     Author ana = new Author("ana", "password", 1);
                     Author peter = new Author("peter", "password", 1);
@@ -47,7 +47,7 @@ public class UserDataConfig {
                     Document storm = new Document("Storm");
                     Document calm = new Document("Calm");
 
-            authoritiesRepository.save(read);
+            authoritiesRepository.save(anaRead);
 
             authorRepository.saveAll(
                     List.of(ana, peter, douglas, joel, brian, dumbledore)

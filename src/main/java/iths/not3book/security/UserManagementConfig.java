@@ -1,4 +1,4 @@
-package iths.not3book.config;
+package iths.not3book.security;
 
 import iths.not3book.authorities.Authority;
 import org.springframework.context.annotation.Bean;

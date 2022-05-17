@@ -1,4 +1,4 @@
-package iths.not3book.config;
+package iths.not3book.security;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;

@@ -10,10 +10,22 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 
 import java.time.LocalDateTime;
 
+/**
+ * GlobalExceptionHandler class with ControllerAdvice annotation.
+ * Provides centralized exception handling across all methods
+ * subject to the RequestMapping-annotation.
+ * @see ResponseEntityExceptionHandler
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
 
+    /**
+     * Method that handles the logic for {@link org.springframework.web.client.HttpServerErrorException.InternalServerError}.
+     * @param exception The exception that was thrown.
+     * @param webRequest The request made that led to the exception being thrown.
+     * @see ErrorResponse
+     */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public ResponseEntity<ErrorResponse> handleInternalErrorException(Exception exception,
@@ -28,6 +40,12 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
     }
 
 
+    /**
+     * Method that handles the logic for {@link ResourceNotFoundException}.
+     * @param exception The exception that was thrown
+     * @param webRequest The request made that led to the exception being thrown.
+     * @see ErrorResponse
+     */
     @ExceptionHandler(ResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ResponseEntity<ErrorResponse> handleResourceNotFoundException(ResourceNotFoundException exception,

@@ -1,9 +1,9 @@
 package iths.not3book.sampledata;
 
-import iths.not3book.authorities.Authority;
 import iths.not3book.author.Author;
 import iths.not3book.author.AuthorRepository;
 import iths.not3book.authorities.AuthoritiesRepository;
+import iths.not3book.authorities.Authority;
 import iths.not3book.document.Document;
 import iths.not3book.document.DocumentRepository;
 import iths.not3book.subscriber.Subscriber;
@@ -14,9 +14,19 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
+/**
+ * Configuration class that creates sample data.
+ */
 @Configuration
 public class UserDataConfig {
 
+    /**
+     * Method that injects some sample data to perform tests with
+     * @param authorRepository Creates {@link Author} and sets values to fields 'userName', 'password' and 'enabled'.
+     * @param subscriberRepository Creates {@link Subscriber} and sets values to fields 'userName and 'password'.
+     * @param documentRepository Creates {@link Document} and sets value to the 'title' field.
+     * @param authoritiesRepository Creates {@link Authority} and sets values to fields 'userName' and 'authority'.
+     */
     @Bean
     CommandLineRunner commandLineRunner(
             AuthorRepository authorRepository,
@@ -24,8 +34,6 @@ public class UserDataConfig {
             DocumentRepository documentRepository,
             AuthoritiesRepository authoritiesRepository) {
         return args -> {
-
-                    Authority anaRead = new Authority("ana", "read");
 
                     Author ana = new Author("ana", "password", 1);
                     Author peter = new Author("peter", "password", 1);
@@ -47,7 +55,8 @@ public class UserDataConfig {
                     Document storm = new Document("Storm");
                     Document calm = new Document("Calm");
 
-            authoritiesRepository.save(anaRead);
+                    Authority anaRead = new Authority("ana", "read");
+
 
             authorRepository.saveAll(
                     List.of(ana, peter, douglas, joel, brian, dumbledore)
@@ -58,6 +67,7 @@ public class UserDataConfig {
             documentRepository.saveAll(
                     List.of(bible, koran, HP1, HP2, storm, calm)
             );
+            authoritiesRepository.save(anaRead);
         };
     }
 }
